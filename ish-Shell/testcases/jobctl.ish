@@ -1,0 +1,25 @@
+/bin/echo "***Basic backgrounding check***"
+/bin/true &
+/bin/true
+/bin/echo "***Checking that things in the background are waited on properly***"
+/bin/sleep 5 &
+/bin/sleep 3 &
+/bin/sleep 4
+/bin/sleep 2
+/bin/echo "***Checking the jobs and fg commands***"
+/bin/sleep 5 &
+jobs
+fg %1
+/bin/echo "***Checking what happens when background jobs write to the term***"
+/bin/stty +tostop
+/bin/ls /tmp &
+jobs
+fg
+/bin/echo "***Checking use of builtins in the background***"
+setenv FOO foo
+setenv BAR bar
+setenv &
+fg
+/bin/pwd
+cd /tmp &
+/bin/pwd

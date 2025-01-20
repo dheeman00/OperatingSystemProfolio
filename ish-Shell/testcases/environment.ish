@@ -1,0 +1,15 @@
+setenv
+setenv FOOBAR foo
+setenv
+setenv TESTENV bar
+./env_check
+setenv PATH /bin:/usr/bin
+setenv
+echo basic path check
+setenv PATH /bin,/usr/bin
+setenv
+echo incorrect path check should not run
+unsetenv FOOBAR
+unsetenv PATH
+setenv
+echo unset path check should not run

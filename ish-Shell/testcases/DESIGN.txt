@@ -1,0 +1,71 @@
+Basic functionality required for a 65
+
+Without .ishrc:
+ 5 Start shell - check prompt
+ 10 Run command with full command name
+ 5 Run command with full command name and arguments
+ 3 Quoted arguments handled properly
+ 2 Longer-running command waited on properly
+ 5 ';'-separated command sequence
+ 3 'cd' builtin works (check with /bin/pwd)
+ 1 'quit' and EOF cause shell to exit properly
+ 1 attempt to execute invalid/protected file
+ 
+ 5 setenv environment variables are correctly passed to child processes
+ 3 Check PATH searching works
+ 2 What is PATH is the wrong syntax?
+ 1 check that printenv works
+ 1 Check that unsetenv works
+
+ 3 check that I can add an alias
+ 2 check that I can remove an alias
+
+ 7 Make sure we're not leaking processes or creating lots of zombies
+ 3 All fds are available after fork/exec
+ 5 Not leaking memory
+
+ 5 check that .ishrc is executed properly
+ 5 check that the shell keeps working after reading .ishrc
+ 3 What if .ishrc is there but not readable?
+
+Double-check
+ * check that I'm not a disguised csh or similar - fail from class if so
+ * check that the 'system' library call is not used - 0 on assignment if so
+ * check that 'getenv' and 'putenv' aren't used - -30 on assignment if so
+ * check that execve() is used - -30 minimum if not
+
+File redirection
+ 2 I can redirect output to a simple file
+ 1 What if the permissions are denied for creating the output file?
+ 1 Check that appending works
+ 1 Check that redirection of stderr works
+
+ 2 I can redirect input from a simple file
+ 1 Input file doesn't exist or permission denied on the input file?
+
+ 1 Ambiguous redirections are detected
+ 1 Redirection of input and output from a file at the same works
+
+Job control
+ 1 I can run a job in the background
+ 1 When that job terminated, termination is reported by the shell, and
+   the process no longer exists (No zombies!)
+ 1 Stopping of background jobs is reported at the next prompt
+ 1 'jobs' reports the status of jobs that are running
+ 1 'fg' brings a job started in the background into the foreground and 
+   will bring stopped jobs into the foreground properly
+ 1 'bg; will continue stopped jobs in the background
+ 1 'kill' will kill jobs
+ 1 Background jobs that attempt to write to the terminal fail to do so and stop if
+   stty tostop is set
+ 1 ^Z will stop jobs and reclaim the terminal properly and ^Z when the shell 
+   is running doesn't mess up the shell
+ 1 builtins run in the background run in a subshell
+
+Pipelines
+ 3 Pipeline commands run, and run in parallel
+ 3 All pipeline commands properly waited on (no zombie processes)
+ 2 Pipelines background and foregound properly
+ 1 'jobs' reports all of the processes in the pipeline
+ 1 builtins can be in the pipeline (in a subshell) - what if the last command is
+   a builtin? Still in a subshell.

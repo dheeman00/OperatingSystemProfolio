@@ -1,0 +1,19 @@
+/bin/echo "***Checking pipeline basics***"
+./countprocs
+/bin/ls /etc | grep passwd
+/bin/date
+/bin/sleep 5 | /bin/sleep 5
+/bin/date
+./countprocs
+/bin/echo "***Checking backgrounding of pipelines***"
+/bin/stty +tostop
+sleep 5 | /bin/ls /etc | grep passwd &
+jobs
+fg
+/bin/echo "***Checking pipelines with builtins***"
+setenv FOO foo
+setenv BAR bar
+setenv | grep foo
+/bin/pwd
+/bin/sleep 1 | cd
+/bin/pwd

@@ -1,0 +1,13 @@
+/bin/ls
+/bin/echo echo test
+/bin/ls "quoted argument test"
+/bin/sleep 10
+/bin/echo semicolon; /bin/echo test
+/bin/pwd
+cd /tmp
+/bin/pwd
+cd
+/bin/pwd
+/bin/invalid_program
+quit
+echo should not get here

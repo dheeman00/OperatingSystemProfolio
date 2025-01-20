@@ -1,0 +1,13 @@
+alias foo /bin/echo
+alias
+foo FOO!
+alias bar echo 
+alias
+bar BAR!
+setenv PATH /bin:/usr/bin
+bar BAR!
+unalias foo
+foo
+unalias bar
+bar
+alias

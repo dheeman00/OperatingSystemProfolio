@@ -1,0 +1,15 @@
+rm -f redirectout
+/bin/echo out test > redirectout
+/bin/cat redirectout
+/bin/echo permission test > /redirectout
+/bin/cat redirectout
+/bin/echo append test >> redirectout
+/bin/cat redirectout
+/bin/touch /etc/passwd >& redirecterr
+/bin/touch /etc/passwd >>& redirecterr
+/bin/cat < ../testcases/redirectin
+/bin/cat < nonexist-in
+/bin/cat < ../testcases/redirectin < redirectout > foo > bar
+/bin/ls redirectout foo bar
+/bin/cat < ../testcases/redirectin > redirectout
+/bin/cat redirectout

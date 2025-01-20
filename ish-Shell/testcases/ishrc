@@ -1,0 +1,2 @@
+setenv PATH /bin:/usr/bin
+/bin/echo In ISHRC
