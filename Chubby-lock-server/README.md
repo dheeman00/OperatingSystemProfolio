@@ -1,6 +1,10 @@
-# Basics of Consensus and Go
 
-In this assignment, you will implement a basic Chubby-like lock server in the Go programming language, starting from a simple Key-Value store (taken from github.com/otoolep/hraftd) that uses the hashicorp implementation of the Raft consensus protocols. You will talk to the server using a simple HTTP server connected to it, allowing you to use curl -X to send commands to and receive data from the server:
+## 💡 Lock Server Overview
+
+This project includes a lightweight **distributed lock server** implemented in **Go**, inspired by the architecture of the Chubby lock service. It extends a minimal **Key-Value store** based on the open-source project [`github.com/otoolep/hraftd`](https://github.com/otoolep/hraftd), which utilizes **HashiCorp's Raft** protocol for consensus and fault tolerance.
+
+An integrated **HTTP server** provides a clean interface for interaction. Clients can use tools like `curl` with `-X` commands to send lock and unlock operations or retrieve lock status via RESTful endpoints. This design allows for easy testing, scripting, and integration in distributed systems.
+
 
 ## Starting the cluster server
 I have created a simple Procfile setup for the provided sourcecode that you can use to start and stop the server and individual nodes in it. The default implementation simply starts three servers on the server on which you run, with the second and third nodes starting 5 seconds after the first to give time for the server to start.
